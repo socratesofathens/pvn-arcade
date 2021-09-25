@@ -1,0 +1,32 @@
+[
+  {
+    "images": [
+      {
+        "name": "moononly",
+        "size": "55.34",
+        "left": "25.95",
+        "top": "17.08"
+      }
+    ]
+  },
+  {
+    "images": [
+      {
+        "name": "pantherandbook",
+        "size": "27.13",
+        "left": "44.83",
+        "top": "51.13"
+      }
+    ]
+  },
+  {
+    "images": [
+      {
+        "name": "textonly",
+        "size": "25.4866",
+        "left": "30.83",
+        "top": "32.41"
+      }
+    ]
+  }
+]
