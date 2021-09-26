@@ -1,16 +1,16 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 
-import Image from './Image'
+import ImageStyle from './style/Image'
 
-export default function Dynamic ({ name, size, top, left }: {
-  name: string
+export default function Dynamic ({ file, size, top, left }: {
+  file: string
   size?: string | number
   top?: string | number
   left?: string | number
 }): JSX.Element {
   return (
-    <Image
-      src={require(`./${name}.png`).default}
+    <ImageStyle
+      src={require(`./${file}.png`).default}
       size={size}
       left={left}
       top={top}

@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
-import Div from './Div'
-import Dynamic from './Dynamic'
-import Global from './Global'
-import Main, { HEIGHT } from './Main'
+import GlobalStyle from './style/Global'
+import Main, { HEIGHT } from './style/Main'
 
 import parseNumber from './parseNumber'
+import Render from './Render'
 import sequence from './sequence.json'
-import { Entity, Image, Point, Text } from './types'
+import { Entity, Point } from './types'
 
 export default function App (): JSX.Element {
   const [index, setIndex] = useState(0)
@@ -17,55 +16,30 @@ export default function App (): JSX.Element {
   const point: Point = sequence[index]
 
   const { ref, height = 1 } = useResizeObserver<HTMLDivElement>()
-  const currentRatio = height / HEIGHT
+  const ratio = height / HEIGHT
 
-  function getFontSize (value?: string | number): number | undefined {
-    if (value != null) {
-      const fontSizeNumber = parseNumber(value)
-      const fontSize = fontSizeNumber * currentRatio
+  const renders = entities.map(entity => {
+    const render = <Render key={entity.name} entity={entity} ratio={ratio} />
 
-      return fontSize
-    }
-  }
-
-  const dynamics = entities.map(entity => {
-    if (entity.type === 'image') {
-      const image = entity as Image
-
-      return (
-        <Dynamic
-          key={image.name}
-          name={image.name}
-          size={image.size}
-          left={image.left}
-          top={image.top}
-        />
-      )
-    }
-
-    if (entity.type === 'text') {
-      const text = entity as Text
-      const fontSize = getFontSize(text.fontSize)
-
-      return (
-        <Div
-          key={text.name}
-          left={text.left}
-          top={text.top}
-          color={text.color}
-          fontFamily={text.fontFamily}
-          fontWeight={text.fontWeight}
-          fontSize={fontSize}
-        >
-          {text.content}
-        </Div>
-      )
-    }
+    return render
   })
 
   function effect (): void {
-    if (point.add != null) {
-      const combinedEntities = [...entities, ...point.add]
+    if (point.remove != null || point.add != null) {
+      const removedEntities = point.remove != null
+        ? entities.filter(entity => {
+          if (point.remove != null) {
+            return !point.remove.includes(entity.name)
+          }
+
+          return true
+        })
+        : entities
+
+      const combinedEntities = point.add != null
+        ? [...removedEntities, ...point.add]
+        : removedEntities
+
       setEntities(combinedEntities)
     }
 
@@ -88,13 +62,10 @@ export default function App (): JSX.Element {
 
   return (
     <>
-      <Global />
+      <GlobalStyle />
 
-      <Main
-        ref={ref}
-        color='white'
-      >
-        {dynamics}
+      <Main ref={ref} color='white'>
+        {renders}
       </Main>
     </>
   )

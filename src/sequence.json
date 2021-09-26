@@ -1,13 +1,11 @@
 [
   {
-    "delay": 750
-  },
-  {
-    "delay": 750,
+    "delay": 1000,
     "add": [
       {
         "type": "image",
         "name": "moononly",
+        "file": "moononly",
         "size": "55.34",
         "left": "41.10",
         "top": "39.75"
@@ -15,11 +13,12 @@
     ]
   },
   {
-    "delay": "750",
+    "delay": "1000",
     "add": [
       {
         "type": "image",
         "name": "pantherandbook",
+        "file": "pantherandbook",
         "size": "27.13",
         "left": "59.44",
         "top": "59.7"
@@ -27,11 +26,12 @@
     ]
   },
   {
-    "delay": 750,
+    "delay": 1000,
     "add": [
       {
         "type": "image",
         "name": "textonly",
+        "file": "textonly",
         "size": "25.4866",
         "left": "41.09",
         "top": "40.15"
@@ -39,6 +39,7 @@
     ]
   },
   {
+    "delay": "2000",
     "add": [
       {
         "type": "text",
@@ -50,6 +51,19 @@
         "left": "50",
         "top": "86",
         "color": "red"
+      }
+    ]
+  },
+  {
+    "remove": ["arcadeTitle", "moononly", "textonly", "pantherandbook"],
+    "add": [
+      {
+        "type": "button",
+        "name": "readersBlockButton",
+        "content": "Reader's Block",
+        "left": 25,
+        "top": 50,
+        "goto": "readersBlock"
       }
     ]
   }

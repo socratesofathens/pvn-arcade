@@ -16,7 +16,7 @@ function image ({ image }: {
   }
 }
 
-const Main = styled.main`
+const MainStyle = styled.main`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -35,4 +35,4 @@ const Main = styled.main`
   margin: auto;
 `
 
-export default Main
+export default MainStyle

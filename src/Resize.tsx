@@ -1,22 +1,23 @@
-import Div from './Div'
+import { ReactNode } from 'react'
+import DivStyle from './style/Div'
 import parseNumber from './parseNumber'
 
 export default function Resize ({
-  currentRatio, content, left, top, color, fontFamily, fontWeight, fontSize
+  children, left, top, color, fontFamily, fontWeight, fontSize, ratio
 }: {
-  currentRatio: number
-  content: string
+  children: ReactNode
   left?: string | number
   top?: string | number
   color?: string
   fontFamily?: string
   fontWeight?: string | number
   fontSize?: string | number
+  ratio: number
 }): JSX.Element {
   function getFontSize (value?: string | number): number | undefined {
     if (value != null) {
       const fontSizeNumber = parseNumber(value)
-      const fontSize = fontSizeNumber * currentRatio
+      const fontSize = fontSizeNumber * ratio
 
       return fontSize
     }
@@ -25,7 +26,7 @@ export default function Resize ({
   const resized = getFontSize(fontSize)
 
   return (
-    <Div
+    <DivStyle
       left={left}
       top={top}
       color={color}
@@ -33,7 +34,7 @@ export default function Resize ({
       fontWeight={fontWeight}
       fontSize={resized}
     >
-      {content}
-    </Div>
+      {children}
+    </DivStyle>
   )
 }

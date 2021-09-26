@@ -10,6 +10,7 @@ export type Effect = Cleaner | undefined
 export interface Point {
   delay?: string | number
   add?: Entity[]
+  remove?: string[]
 }
 
 export interface Entity {
@@ -21,13 +22,17 @@ export interface Entity {
 
 export interface Image extends Entity {
   size: string | number
+  file: string
 }
 
 export interface Text extends Entity {
   content: string | number
   fontSize?: string | number
-  width?: string | number
   color?: string
   fontFamily?: string
   fontWeight?: string | number
+}
+
+export interface Button extends Text {
+  goto: string
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import center from './center'
 
-interface DivProps {
+interface ButtonStyleProps {
   fontFamily?: string
   fontSize?: string | number
   fontWeight?: string | number
@@ -11,24 +11,12 @@ interface DivProps {
   color?: string
 }
 
-function percent (value?: string | number): string | undefined {
-  if (value != null) {
-    const percentage = `${value}%`
-
-    return percentage
-  }
-}
-
-const Div = styled.div<DivProps>`
+const ButtonStyle = styled.button<ButtonStyleProps>`
   ${center}
-  left: ${props => percent(props.left)};
-  top: ${props => percent(props.top)};
-  width: auto;
-  height: auto;
   color: ${props => props.color};
   font-family: ${props => props.fontFamily};
   font-weight: ${props => props.fontWeight};
   font-size: ${props => props.fontSize}em;
 `
 
-export default Div
+export default ButtonStyle
