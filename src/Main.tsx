@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const WIDTH = 1600
+export const HEIGHT = 900
+export const RATIO = WIDTH / HEIGHT
+export const FLIP = HEIGHT / WIDTH
+
 function image ({ image }: {
   color?: string
   image?: string
@@ -19,9 +24,9 @@ const Main = styled.main`
   background-image: ${image};
   background-color: ${props => props.color};
   width: 100vw; 
-  height: calc(9/16 * 100vw);
+  height: calc(${FLIP} * 100vw);
   max-height: 100vh;
-  max-width: calc(16/9 * 100vh);
+  max-width: calc(${RATIO} * 100vh);
   
   /* center */
   position: relative;

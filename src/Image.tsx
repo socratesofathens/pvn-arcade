@@ -4,6 +4,7 @@ interface ImageProps {
   size?: string | number
   left?: string | number
   top?: string | number
+  center?: boolean
 }
 
 function percent (value?: string | number): string | undefined {
@@ -16,6 +17,7 @@ function percent (value?: string | number): string | undefined {
 
 const Image = styled.img<ImageProps>`
   position: absolute;
+  transform: translate(-50%, -50%);
   height: ${props => percent(props.size)};
   left: ${props => percent(props.left)};
   top: ${props => percent(props.top)};

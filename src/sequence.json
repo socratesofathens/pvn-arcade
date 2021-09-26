@@ -1,31 +1,55 @@
 [
   {
-    "images": [
+    "delay": 750
+  },
+  {
+    "delay": 750,
+    "add": [
       {
+        "type": "image",
         "name": "moononly",
         "size": "55.34",
-        "left": "25.95",
-        "top": "17.08"
+        "left": "41.10",
+        "top": "39.75"
       }
     ]
   },
   {
-    "images": [
+    "delay": "750",
+    "add": [
       {
+        "type": "image",
         "name": "pantherandbook",
         "size": "27.13",
-        "left": "44.83",
-        "top": "51.13"
+        "left": "59.44",
+        "top": "59.7"
       }
     ]
   },
   {
-    "images": [
+    "delay": 750,
+    "add": [
       {
+        "type": "image",
         "name": "textonly",
         "size": "25.4866",
-        "left": "30.83",
-        "top": "32.41"
+        "left": "41.09",
+        "top": "40.15"
+      }
+    ]
+  },
+  {
+    "add": [
+      {
+        "type": "text",
+        "name": "arcadeTitle",
+        "content": "ARCADE",
+        "fontSize": "10",
+        "fontFamily": "monospace",
+        "fontWeight": "bold",
+        "left": "50",
+        "top": "86",
+        "color": "red"
       }
     ]
   }
