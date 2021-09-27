@@ -1,7 +1,8 @@
-import Dynamic from './Dynamic'
-import Resize from './Resize'
+import ImageBox from './box/Image'
+import TextBox from './box/Text'
+import ButtonBox from './box/Button'
+
 import { Button, Entity, Image, Text } from './types'
-import Box from './Box'
 
 export default function Render ({ entity, ratio }: {
   entity: Entity
@@ -11,7 +12,7 @@ export default function Render ({ entity, ratio }: {
     const image = entity as Image
 
     return (
-      <Dynamic
+      <ImageBox
         file={image.file}
         size={image.size}
         left={image.left}
@@ -24,7 +25,7 @@ export default function Render ({ entity, ratio }: {
     const text = entity as Text
 
     return (
-      <Resize
+      <TextBox
         ratio={ratio}
         left={text.left}
         top={text.top}
@@ -34,7 +35,7 @@ export default function Render ({ entity, ratio }: {
         fontSize={text.fontSize}
       >
         {text.content}
-      </Resize>
+      </TextBox>
     )
   }
 
@@ -42,7 +43,7 @@ export default function Render ({ entity, ratio }: {
     const button = entity as Button
 
     return (
-      <Box
+      <ButtonBox
         left={button.left}
         top={button.top}
         color={button.color}
@@ -52,7 +53,7 @@ export default function Render ({ entity, ratio }: {
         goto={button.goto}
       >
         {button.content}
-      </Box>
+      </ButtonBox>
     )
   }
 

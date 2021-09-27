@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
-import DivStyle from './style/Div'
-import parseNumber from './parseNumber'
+import DivStyle from '../style/Div'
+import parseNumber from '../parseNumber'
 
-export default function Resize ({
+export default function TextBox ({
   children, left, top, color, fontFamily, fontWeight, fontSize, ratio
 }: {
   children: ReactNode

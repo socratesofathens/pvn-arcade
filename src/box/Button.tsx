@@ -1,7 +1,8 @@
 import { ReactNode } from 'react'
-import ButtonStyle from './style/Button'
 
-export default function Box ({
+import ButtonStyle from '../style/Button'
+
+export default function ButtonBox ({
   children, goto, left, top, color, fontFamily, fontSize, fontWeight
 }: {
   children?: ReactNode

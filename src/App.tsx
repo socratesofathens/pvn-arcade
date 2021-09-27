@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
 import GlobalStyle from './style/Global'
-import Main, { HEIGHT } from './style/Main'
+import MainStyle from './style/Main'
 
 import parseNumber from './parseNumber'
 import Render from './Render'
 import sequence from './sequence.json'
 import { Entity, Point } from './types'
+import { HEIGHT } from './config'
 
 export default function App (): JSX.Element {
   const [index, setIndex] = useState(0)
@@ -26,7 +27,7 @@ export default function App (): JSX.Element {
 
   function effect (): void {
     if (point.remove != null || point.add != null) {
-      const removedEntities = point.remove != null
+      const difference = point.remove != null
         ? entities.filter(entity => {
           if (point.remove != null) {
             return !point.remove.includes(entity.name)
@@ -36,11 +37,27 @@ export default function App (): JSX.Element {
         })
         : entities
 
-      const combinedEntities = point.add != null
-        ? [...removedEntities, ...point.add]
-        : removedEntities
+      const sum = point.add != null
+        ? difference.map(entity => {
+          const match = point.add?.find(copied => copied.name === entity.name)
 
-      setEntities(combinedEntities)
+          if (match == null) {
+            return entity
+          }
+
+          return match
+        })
+        : difference
+
+      point.add?.forEach(entity => {
+        const match = sum.find(copied => copied.name === entity.name)
+
+        if (match == null) {
+          sum.push(entity)
+        }
+      })
+
+      setEntities(sum)
     }
 
     if (point.delay != null) {
@@ -64,9 +81,9 @@ export default function App (): JSX.Element {
     <>
       <GlobalStyle />
 
-      <Main ref={ref} color='white'>
+      <MainStyle ref={ref} color='white'>
         {renders}
-      </Main>
+      </MainStyle>
     </>
   )
 }

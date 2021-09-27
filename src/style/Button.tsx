@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import center from './center'
+import centerStyle from './center'
+import textStyle from './text'
 
 interface ButtonStyleProps {
   fontFamily?: string
@@ -12,11 +13,22 @@ interface ButtonStyleProps {
 }
 
 const ButtonStyle = styled.button<ButtonStyleProps>`
-  ${center}
-  color: ${props => props.color};
-  font-family: ${props => props.fontFamily};
-  font-weight: ${props => props.fontWeight};
-  font-size: ${props => props.fontSize}em;
+  ${centerStyle}
+  ${textStyle}
+  background: #575757;
+  color: white;
+  padding: 1%;
+  border: 1px solid #707070;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: #666;
+  }
+
+  &:active {
+    background: black;
+  }
 `
 
 export default ButtonStyle

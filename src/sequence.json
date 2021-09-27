@@ -60,8 +60,16 @@
       {
         "type": "button",
         "name": "readersBlockButton",
-        "content": "Reader's Block",
+        "content": "Readers Block",
         "left": 25,
+        "top": 50,
+        "goto": "readersBlock"
+      },
+      {
+        "type": "button",
+        "name": "kitchenDefenseButton",
+        "content": "Kitchen Defense",
+        "left": 75,
         "top": 50,
         "goto": "readersBlock"
       }

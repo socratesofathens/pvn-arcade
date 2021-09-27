@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
-export const WIDTH = 1600
-export const HEIGHT = 900
-export const RATIO = WIDTH / HEIGHT
-export const FLIP = HEIGHT / WIDTH
+import { FLIP, RATIO } from '../config'
 
 function image ({ image }: {
   color?: string
