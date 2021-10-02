@@ -19,6 +19,7 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
   color: white;
   padding: 1%;
   border: 1px solid #707070;
+
   border-radius: 4px;
   cursor: pointer;
 

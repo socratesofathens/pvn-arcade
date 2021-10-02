@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import percent from '../percent'
+import percent from '../lib/percent'
 
 interface CenterProps {
   left?: string | number

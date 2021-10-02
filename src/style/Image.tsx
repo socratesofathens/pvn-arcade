@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import centerStyle from './center'
-import percent from '../percent'
+import percent from '../lib/percent'
 
 interface ImageProps {
   size?: string | number

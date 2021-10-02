@@ -11,6 +11,7 @@ export interface Point {
   delay?: string | number
   add?: Entity[]
   remove?: string[]
+  component?: string
 }
 
 export interface Entity {
@@ -35,4 +36,11 @@ export interface Text extends Entity {
 
 export interface Button extends Text {
   goto: string
+}
+
+export interface State {
+  index: number
+  entities: Entity[]
+  component?: string
+  sequence: Point[]
 }

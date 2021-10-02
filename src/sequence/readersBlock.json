@@ -1,0 +1,15 @@
+[
+  { "component": "readers-block-react" },
+  {
+    "remove": ["readersBlockButton"],
+    "add": [
+      {
+        "name": "readerCongratulations",
+        "type": "text",
+        "content": "Good reading!",
+        "left": 25,
+        "top": 50
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 
-import ImageStyle from '../style/Image'
+import ImageStyle from '../../style/Image'
 
 export default function ImageBox ({ file, size, top, left }: {
   file: string
@@ -10,7 +10,7 @@ export default function ImageBox ({ file, size, top, left }: {
 }): JSX.Element {
   return (
     <ImageStyle
-      src={require(`../image/${file}.png`).default}
+      src={require(`../../image/${file}.png`).default}
       size={size}
       left={left}
       top={top}

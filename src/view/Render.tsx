@@ -2,11 +2,12 @@ import ImageBox from './box/Image'
 import TextBox from './box/Text'
 import ButtonBox from './box/Button'
 
-import { Button, Entity, Image, Text } from './types'
+import { Button, Entity, Image, Text } from '../types'
 
-export default function Render ({ entity, ratio }: {
+export default function RenderView ({ entity, ratio, setState }: {
   entity: Entity
   ratio: number
+  setState: any
 }): JSX.Element {
   if (entity.type === 'image') {
     const image = entity as Image
@@ -51,6 +52,7 @@ export default function Render ({ entity, ratio }: {
         fontWeight={button.fontWeight}
         fontSize={button.fontSize}
         goto={button.goto}
+        setState={setState}
       >
         {button.content}
       </ButtonBox>

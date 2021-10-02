@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { FLIP, RATIO } from '../config'
+import { FLIP, RATIO } from '../lib/config'
 
 function image ({ image }: {
   color?: string
