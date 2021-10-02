@@ -1,14 +1,13 @@
 [
   { "component": "kitchen-defense-react" },
   {
-    "remove": ["kitchenDefenseButton"],
     "add": [
       {
         "name": "defenseCongratulations",
         "type": "text",
         "content": "Good defending!",
         "left": 75,
-        "top": 50
+        "top": 75
       }
     ]
   }

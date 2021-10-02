@@ -4,6 +4,7 @@ import ButtonStyle from '../../style/Button'
 
 import readersBlock from '../../sequence/readersBlock.json'
 import kitchenDefense from '../../sequence/kitchenDefense.json'
+import loadPoint from '../../lib/loadPoint'
 const sequences: Record<string, any> = { readersBlock, kitchenDefense }
 
 export default function ButtonBox ({
@@ -23,11 +24,13 @@ export default function ButtonBox ({
     console.log(goto)
 
     setState((state: any) => {
-      const copy = { ...state }
       const sequence = sequences[goto]
-      copy.sequence = sequence
-      copy.index = 0
-      return copy
+      const point = sequence[0]
+      const loadedState = loadPoint({ state, point })
+
+      const sequenceState = { ...loadedState, sequence, index: 0 }
+
+      return sequenceState
     })
 
     event.stopPropagation()
