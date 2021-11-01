@@ -1,9 +1,10 @@
-import { ReactNode } from 'react'
+import { ReactNode, useContext } from 'react'
 import DivStyle from '../../style/Div'
 import parseNumber from '../../lib/parseNumber'
+import context from '../../context'
 
 export default function TextBox ({
-  children, left, top, color, fontFamily, fontWeight, fontSize, ratio
+  children, left, top, color, fontFamily, fontWeight, fontSize
 }: {
   children: ReactNode
   left?: string | number
@@ -12,10 +13,11 @@ export default function TextBox ({
   fontFamily?: string
   fontWeight?: string | number
   fontSize?: string | number
-  ratio: number
 }): JSX.Element {
+  const { ratio } = useContext(context)
+
   function getFontSize (value?: string | number): number | undefined {
-    if (value != null) {
+    if (value != null && ratio != null) {
       const fontSizeNumber = parseNumber(value)
       const fontSize = fontSizeNumber * ratio
 

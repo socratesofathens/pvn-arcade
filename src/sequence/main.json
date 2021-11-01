@@ -63,7 +63,7 @@
         "content": "Reader's Block",
         "left": 25,
         "top": 50,
-        "goto": "readersBlock"
+        "sequence": "readersBlock"
       },
       {
         "type": "button",
@@ -71,7 +71,7 @@
         "content": "Kitchen Defense",
         "left": 75,
         "top": 50,
-        "goto": "kitchenDefense"
+        "sequence": "kitchenDefense"
       }
     ]
   }

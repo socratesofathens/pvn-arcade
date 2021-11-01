@@ -35,7 +35,7 @@ export interface Text extends Entity {
 }
 
 export interface Button extends Text {
-  goto: string
+  sequence: string
 }
 
 export interface State {

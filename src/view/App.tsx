@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
-import ReadersBlock from 'readers-block-react'
-import KitchenDefense from 'kitchen-defense-react'
+
+import context from '../context'
 
 import { HEIGHT } from '../lib/config'
 import loadPoint from '../lib/loadPoint'
@@ -12,10 +12,12 @@ import main from '../sequence/main.json'
 import GlobalStyle from '../style/Global'
 import MainStyle from '../style/Main'
 
-import Renders from './Renders'
+import advanceState from '../lib/advanceState'
+import loadSequence from '../lib/loadSequence'
 
 import { Point, State } from '../types'
-import advanceState from '../lib/advanceState'
+
+import Content from './Content'
 
 const initial: State = {
   entities: [],
@@ -32,33 +34,21 @@ export default function App (): JSX.Element {
 
   const point = state.sequence[state.index]
 
-  function advance (): void {
-    setState(state => {
-      const advanced = advanceState(state)
-
-      return advanced
-    })
-  }
-
-  function advanceTo (nextIndex: number): void {
-    setState(state => {
-      const current = state.index === nextIndex - 1
-
-      if (current) {
-        const advanced = advanceState(state)
-
-        return advanced
-      }
-
-      return state
-    })
-  }
-
   function effect (): void {
     function tick (): void {
-      const sumIndex = state.index + 1
+      const { index } = state
 
-      advanceTo(sumIndex)
+      setState(state => {
+        const current = state.index === index
+
+        if (current) {
+          const advanced = advanceState(state)
+
+          return advanced
+        }
+
+        return state
+      })
     }
 
     if (point.delay != null) {
@@ -70,37 +60,35 @@ export default function App (): JSX.Element {
 
   useEffect(effect, [point])
 
-  const components: Record<string, any> = {
-    'readers-block-react': ReadersBlock,
-    'kitchen-defense-react': KitchenDefense
-  }
-
-  const Component = state.component != null && components[state.component]
-
-  function next (result?: any): any {
-    advance()
-  }
-
   const { ref, height = 1 } = useResizeObserver<HTMLDivElement>()
   const ratio = height / HEIGHT
 
-  const content = Component != null && Component !== false
-    ? <Component next={next} />
-    : (
-      <Renders
-        entities={state.entities}
-        ratio={ratio}
-        setState={setState}
-        next={next}
-      />
-    )
+  function advance (): void {
+    setState(advanceState)
+  }
+
+  function select (sequence: string): void {
+    setState((state: State) => {
+      const loaded = loadSequence({ state, sequence })
+
+      return loaded
+    })
+  }
+
+  const value = { state, point, advance, select, ratio }
+
+  const content = (
+    <Content />
+  )
 
   return (
     <>
       <GlobalStyle />
 
       <MainStyle ref={ref} color='white'>
-        {content}
+        <context.Provider value={value}>
+          {content}
+        </context.Provider>
       </MainStyle>
     </>
   )
