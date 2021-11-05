@@ -1,13 +1,5 @@
 import { createContext } from 'react'
-import { State, Point } from '../types'
-
-interface Value {
-  state?: State
-  point?: Point
-  advance?: () => void
-  select?: (sequence: string) => void
-  ratio?: number
-}
+import { Value } from '../types'
 
 const value: Value = {}
 const context = createContext<Value>(value)

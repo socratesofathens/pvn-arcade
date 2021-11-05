@@ -12,21 +12,35 @@ export default function ButtonBox ({
   color,
   fontFamily,
   fontSize,
-  fontWeight
+  fontWeight,
+  save,
+  load
 }: {
   children?: ReactNode
-  sequence: string
+  sequence?: string
   fontFamily?: string
   fontSize?: string | number
   fontWeight?: string | number
   left?: string | number
   top?: string | number
   color?: string
+  save?: boolean
+  load?: boolean
 }): JSX.Element {
-  const { select } = useContext(context)
+  const value = useContext(context)
 
   function onClick (event: MouseEvent): void {
-    select?.(sequence)
+    if (sequence != null) {
+      value.select?.(sequence)
+    }
+
+    if (save != null && save) {
+      value.save?.()
+    }
+
+    if (load != null && load) {
+      value.load?.()
+    }
 
     event.stopPropagation()
   }

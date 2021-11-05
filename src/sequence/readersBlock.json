@@ -1,11 +1,11 @@
 [
-  { "component": "readers-block-react" },
+  { "component": "readers-block-react", "value": "readersBlock" },
   {
     "add": [
       {
-        "name": "readerCongratulations",
+        "name": "readerScore",
         "type": "text",
-        "content": "Good reading!",
+        "content": "You spelled <readersBlock> words!",
         "left": 25,
         "top": 75
       }

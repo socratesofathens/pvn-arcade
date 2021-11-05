@@ -7,7 +7,7 @@ import context from '../context'
 import Renders from './Renders'
 
 export default function Content (): JSX.Element {
-  const { advance, state } = useContext(context)
+  const { advance, state, setValue } = useContext(context)
 
   if (state?.component == null) {
     return <Renders />
@@ -20,5 +20,15 @@ export default function Content (): JSX.Element {
 
   const Component = components[state.component]
 
-  return <Component next={advance} />
+  function next (value: any): void {
+    if (state != null) {
+      if (state.value != null) {
+        setValue?.(state?.value, value)
+      }
+    }
+
+    advance?.()
+  }
+
+  return <Component next={next} />
 }

@@ -64,7 +64,9 @@ export default function loadPoint ({ state, point }: {
 }): State {
   const entities = loadEntities({ entities: state.entities, point })
 
-  const loaded = { ...state, entities, component: point.component }
+  const loaded = {
+    ...state, entities, component: point.component, value: point.value
+  }
 
   return loaded
 }

@@ -1,11 +1,13 @@
 [
-  { "component": "kitchen-defense-react" },
+  {
+    "component": "kitchen-defense-react", "value": "kitchenDefense"
+  },
   {
     "add": [
       {
         "name": "defenseCongratulations",
         "type": "text",
-        "content": "Good defending!",
+        "content": "You killed <kitchenDefense> ants!",
         "left": 75,
         "top": 75
       }

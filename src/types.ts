@@ -1,3 +1,5 @@
+import { RefCallback } from 'react'
+
 export interface Frame {
   size?: string | number
   top?: string | number
@@ -11,7 +13,9 @@ export interface Point {
   delay?: string | number
   add?: Entity[]
   remove?: string[]
+  next?: string
   component?: string
+  value?: string
 }
 
 export interface Entity {
@@ -35,12 +39,28 @@ export interface Text extends Entity {
 }
 
 export interface Button extends Text {
-  sequence: string
+  sequence?: string
+  save?: boolean
+  load?: boolean
 }
 
 export interface State {
   index: number
   entities: Entity[]
-  component?: string
   sequence: Point[]
+  values: Record<string, string>
+  component?: string
+  value?: string
+}
+
+export interface Value {
+  state?: State
+  point?: Point
+  ratio?: number
+  advance?: () => void
+  select?: (sequence: string) => void
+  setValue?: (name: string, value: string) => void
+  save?: () => void
+  load?: () => void
+  ref?: RefCallback<HTMLDivElement>
 }

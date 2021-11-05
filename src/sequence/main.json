@@ -72,6 +72,22 @@
         "left": 75,
         "top": 50,
         "sequence": "kitchenDefense"
+      },
+      {
+        "type": "button",
+        "name": "save",
+        "content": "Save",
+        "left": 50,
+        "top": 50,
+        "save": true
+      },
+      {
+        "type": "button",
+        "name": "load",
+        "content": "Load",
+        "left": 50,
+        "top": 60,
+        "load": true
       }
     ]
   }
