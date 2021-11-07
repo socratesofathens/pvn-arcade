@@ -1,0 +1,64 @@
+[
+  {
+    "reset": true,
+    "add": [
+      {
+        "type": "image",
+        "name": "combined",
+        "file": "combined",
+        "size": 37.246444444,
+        "left": "50",
+        "top": 18.623222222
+      },
+      {
+        "type": "zone",
+        "name": "pvnZone",
+        "left": 0,
+        "top": 0,
+        "width": 29.2795,
+        "height": 37.246444444,
+        "sequence": "pvn"
+      },
+      {
+        "type": "button",
+        "name": "readersBlockButton",
+        "content": "Reader's Block",
+        "left": 25,
+        "top": 50,
+        "sequence": "readersBlock"
+      },
+      {
+        "type": "button",
+        "name": "kitchenDefenseButton",
+        "content": "Kitchen Defense",
+        "left": 75,
+        "top": 50,
+        "sequence": "kitchenDefense"
+      },
+      {
+        "type": "button",
+        "name": "saveButton",
+        "content": "Save",
+        "left": 50,
+        "top": 50,
+        "save": true
+      },
+      {
+        "type": "button",
+        "name": "loadButton",
+        "content": "Load",
+        "left": 50,
+        "top": 60,
+        "load": true
+      },
+      {
+        "type": "button",
+        "name": "scoresButton",
+        "content": "Scores",
+        "left": 50,
+        "top": 75,
+        "sequence": "scores"
+      }
+    ]
+  }
+]

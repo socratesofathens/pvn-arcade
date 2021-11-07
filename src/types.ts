@@ -16,13 +16,21 @@ export interface Point {
   next?: string
   component?: string
   value?: string
+  reset?: boolean
+  sequence?: string
 }
 
 export interface Entity {
   name: string
-  type: string
+  type: 'text' | 'image' | 'button' | 'zone'
   left: string | number
   top: string | number
+}
+
+export interface Zone extends Entity {
+  width: string | number
+  height: string | number
+  sequence: string
 }
 
 export interface Image extends Entity {
@@ -58,9 +66,13 @@ export interface Value {
   point?: Point
   ratio?: number
   advance?: () => void
-  select?: (sequence: string) => void
+  select?: (sequence?: string) => void
   setValue?: (name: string, value: string) => void
   save?: () => void
   load?: () => void
   ref?: RefCallback<HTMLDivElement>
+  width?: number
+  height?: number
+  getRealX?: (value: string | number) => number
+  getRealY?: (value: string | number) => number
 }

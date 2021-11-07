@@ -1,0 +1,39 @@
+[
+  {
+    "reset": true,
+    "add": [
+      {
+        "type": "text",
+        "name": "pageArcadeTitle",
+        "content": "Scores",
+        "fontSize": "10",
+        "fontFamily": "monospace",
+        "fontWeight": "bold",
+        "left": "50",
+        "top": "10"
+      },
+      {
+        "type": "button",
+        "name": "mainButton",
+        "content": "Main Menu",
+        "left": 50,
+        "top": "50",
+        "sequence": "menu"
+      },
+      {
+        "name": "readerScorePage",
+        "type": "text",
+        "content": "Reader's Block: <readersBlock>",
+        "left": 25,
+        "top": 50
+      },
+      {
+        "name": "kitchenScorePage",
+        "type": "text",
+        "content": "Kitchen Defense: <readersBlock>",
+        "left": 75,
+        "top": 50
+      }
+    ]
+  }
+]

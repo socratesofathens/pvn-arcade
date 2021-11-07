@@ -12,11 +12,12 @@ import main from '../sequence/main.json'
 import { Point, State } from '../types'
 
 import context from '.'
+import decimal from '../lib/decimal'
 
 const initial: State = {
   entities: [],
   index: 0,
-  sequence: main,
+  sequence: main as Point[],
   values: {}
 }
 
@@ -56,14 +57,14 @@ export default function Provider ({ children }: {
 
   useEffect(effect, [point, index])
 
-  const { ref, height = 1 } = useResizeObserver<HTMLDivElement>()
+  const { ref, height = 1, width = 1 } = useResizeObserver<HTMLDivElement>()
   const ratio = height / HEIGHT
 
   function advance (): void {
     setState(advanceState)
   }
 
-  function select (sequence: string): void {
+  function select (sequence?: string): void {
     setState((state: State) => {
       const loaded = loadSequence({ state, sequence })
 
@@ -97,8 +98,34 @@ export default function Provider ({ children }: {
     }
   }
 
+  function getRealX (value: string | number): number {
+    const decimalValue = decimal(value)
+    const size = decimalValue * width
+
+    return size
+  }
+
+  function getRealY (value: string | number): number {
+    const decimalValue = decimal(value)
+    const size = decimalValue * height
+
+    return size
+  }
+
   const value = {
-    state, point, ratio, save, load, advance, setValue, select, ref
+    state,
+    point,
+    ratio,
+    save,
+    load,
+    advance,
+    setValue,
+    select,
+    ref,
+    height,
+    width,
+    getRealX,
+    getRealY
   }
 
   return (

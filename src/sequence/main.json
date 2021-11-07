@@ -1,5 +1,6 @@
 [
   {
+    "reset": true,
     "delay": 1000,
     "add": [
       {
@@ -55,40 +56,6 @@
     ]
   },
   {
-    "remove": ["arcadeTitle", "moononly", "textonly", "pantherandbook"],
-    "add": [
-      {
-        "type": "button",
-        "name": "readersBlockButton",
-        "content": "Reader's Block",
-        "left": 25,
-        "top": 50,
-        "sequence": "readersBlock"
-      },
-      {
-        "type": "button",
-        "name": "kitchenDefenseButton",
-        "content": "Kitchen Defense",
-        "left": 75,
-        "top": 50,
-        "sequence": "kitchenDefense"
-      },
-      {
-        "type": "button",
-        "name": "save",
-        "content": "Save",
-        "left": 50,
-        "top": 50,
-        "save": true
-      },
-      {
-        "type": "button",
-        "name": "load",
-        "content": "Load",
-        "left": 50,
-        "top": 60,
-        "load": true
-      }
-    ]
+    "sequence": "menu"
   }
 ]

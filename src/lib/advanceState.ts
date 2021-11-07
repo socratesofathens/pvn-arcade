@@ -7,12 +7,10 @@ export default function advanceState (state: State): State {
 
   if (inside) {
     const point = state.sequence[sumIndex]
+    const nextState = { ...state, index: sumIndex }
+    const loadedState = loadPoint({ state: nextState, point })
 
-    const loadedState = loadPoint({ state, point })
-
-    const nextState = { ...loadedState, index: sumIndex }
-
-    return nextState
+    return loadedState
   }
 
   return state

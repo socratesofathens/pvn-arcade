@@ -1,15 +1,18 @@
-import { State } from '../types'
-import readersBlock from '../sequence/readersBlock.json'
-import kitchenDefense from '../sequence/kitchenDefense.json'
+/* eslint @typescript-eslint/no-var-requires: "off" */
+
 import loadPoint from '../lib/loadPoint'
 
-const sequences: Record<string, any> = { readersBlock, kitchenDefense }
+import { State } from '../types'
 
 export default function loadSequence ({ state, sequence }: {
   state: State
-  sequence: string
+  sequence?: string
 }): State {
-  const data = sequences[sequence]
+  if (sequence == null) {
+    return state
+  }
+
+  const data = require(`../sequence/${sequence}.json`)
   const point = data[0]
   const loadedState = loadPoint({ state, point })
 

@@ -12,6 +12,10 @@ export default function RenderView ({ entity }: {
 }): JSX.Element {
   const { state } = useContext(context)
 
+  if (entity.type === 'zone') {
+    return <></>
+  }
+
   if (entity.type === 'image') {
     const image = entity as Image
 

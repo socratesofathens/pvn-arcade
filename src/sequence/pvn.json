@@ -1,0 +1,44 @@
+[
+  {
+    "reset": true,
+    "add": [
+      {
+        "type": "button",
+        "name": "pvnBack",
+        "content": "Main Menu",
+        "left": "10",
+        "top": "20",
+        "sequence": "menu"
+      },
+      {
+        "type": "image",
+        "name": "PVNtitle",
+        "file": "pvn",
+        "size": "25",
+        "left": "50",
+        "top": "20"
+      },
+      {
+        "type": "text",
+        "name": "panBio",
+        "content": "Pan (writer) - Pan has been a full-time writer and game designer for almost a decade. His stories have been read millions of times, and his work has been featured everywhere from Cracked.com to the British Comedy Guide.",
+        "left": 50,
+        "top": 45
+      },
+      {
+        "type": "text",
+        "name": "socratesBio",
+        "content": "Socrates (developer) - Socrates is credited as one of the founders of Western philosophy, and as being the first moral philosopher of the Western ethical tradition of thought. An enigmatic figure, he is chiefly known through this bio which Pan has written for him.",
+        "left": 50,
+        "top": 70
+      },
+      {
+        "type": "text",
+        "name": "hydraBio",
+        "content": "Hydra (artist) - Hydra draws shit you don’t want your mom to see.",
+        "left": 50,
+        "top": 90
+      }
+    ]
+  }
+]

@@ -30,9 +30,7 @@ export default function ButtonBox ({
   const value = useContext(context)
 
   function onClick (event: MouseEvent): void {
-    if (sequence != null) {
-      value.select?.(sequence)
-    }
+    value.select?.(sequence)
 
     if (save != null && save) {
       value.save?.()

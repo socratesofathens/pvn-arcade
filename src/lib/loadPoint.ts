@@ -1,4 +1,5 @@
 import { Entity, Point, State } from '../types'
+import loadSequence from './loadSequence'
 
 function removeEntities ({ entities, names }: {
   entities: Entity[]
@@ -62,11 +63,17 @@ export default function loadPoint ({ state, point }: {
   state: State
   point: Point
 }): State {
-  const entities = loadEntities({ entities: state.entities, point })
+  const sequenceState = loadSequence({ state, sequence: point.sequence })
 
-  const loaded = {
-    ...state, entities, component: point.component, value: point.value
+  const resetEntities = point.reset === true
+    ? []
+    : sequenceState.entities
+
+  const loadedEntities = loadEntities({ entities: resetEntities, point })
+
+  const loadedState = {
+    ...sequenceState, entities: loadedEntities, component: point.component, value: point.value
   }
 
-  return loaded
+  return loadedState
 }
